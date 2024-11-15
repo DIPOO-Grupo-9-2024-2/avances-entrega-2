@@ -1,0 +1,16 @@
+LearningPath,1,EDA,Un curso para estructuras de datos y algoritmos
+LearningPath,2,FMC,Un curso para fundamentos matematicos y computacion
+LearningPath,3,DIFF,Un curso de calculo diferencial
+Tarea,1,Completar ejercicios de Java,Aprender los conceptos básicos de Java,120,Realizar los ejercicios prácticos,false,1
+Recurso,2,Leer artículo sobre POO,Entender los principios de la Programación Orientada a Objetos,90,artículo,https://articulo.com,false,1
+Encuesta,3,Feedback sobre el curso,Obtener retroalimentación de los estudiantes,30,¿Te gustó el curso?;¿Qué mejorarías?,false,1
+Tarea,4,Implementar una clase en Java,Practicar la implementación de clases y objetos,150,Escribir una clase con atributos y métodos,true,1
+Recurso,5,Ver video de patrones de diseño,Aprender sobre patrones de diseño en programación,60,video,https://video.com,true,1
+Encuesta,6,Encuesta de satisfacción,Medir la satisfacción de los estudiantes con el curso,20,¿Estás satisfecho con el curso?;¿Recomendarías este curso?,true,1
+Tarea,12,Resolver problemas de lógica,Practicar la lógica matemática,75,Resolver los problemas del capítulo 1,false,2
+Recurso,13,Leer sobre conjuntos,Entender los conceptos básicos de teoría de conjuntos,50,artículo,https://conjuntos.com,false,2
+Tarea,7,Resolver problemas de límites,Practicar el cálculo de límites,90,Resolver los problemas del capítulo 2,false,3
+Recurso,8,Leer sobre derivadas,Entender el concepto de derivada,60,artículo,https://derivadas.com,false,3
+Encuesta,9,Opinión sobre el tema de límites,Obtener retroalimentación sobre la comprensión de límites,20,¿Entendiste los límites?;¿Qué dudas tienes?,false,3
+Tarea,10,Ejercicios de derivadas,Practicar la derivación de funciones,120,Resolver los ejercicios del capítulo 3,true,3
+Recurso,11,Ver video sobre integrales,Aprender sobre integrales,45,video,https://integrales.com,true,3
