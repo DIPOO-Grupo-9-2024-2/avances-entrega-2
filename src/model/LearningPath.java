@@ -54,7 +54,6 @@ public class LearningPath {
         return this.progreso;
     }
 
-
     // Método para registrar la actividad completada con tiempo dedicado
     public void completarActividad(Actividad actividad, String resultado) {
         for (HistorialActividad historial : historialActividades) {
@@ -63,6 +62,14 @@ public class LearningPath {
                 break;
             }
         }
+    }
+
+    // Nuevo método para resolver un Quiz de Verdadero/Falso
+    public boolean resolverQuizVerdaderoFalso(QuizVerdaderoFalso quiz, boolean respuesta) {
+        boolean esCorrecto = quiz.evaluar(respuesta);
+        String resultado = esCorrecto ? "Correcto" : "Incorrecto";
+        completarActividad(quiz, resultado);
+        return esCorrecto;
     }
 
     // Getter para obtener el historial de actividades completadas
@@ -115,6 +122,7 @@ public class LearningPath {
         this.historialActividades = historialActividades;
     }
 }
+
 
 
 

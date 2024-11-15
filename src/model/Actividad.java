@@ -22,7 +22,9 @@ public abstract class Actividad {
 
     }
 
-    // Método abstracto que será implementado por las subclases
+
+
+	// Método abstracto que será implementado por las subclases
     public abstract boolean completar();
 
     // Cambia el estado de la actividad a "completada"
