@@ -2,7 +2,7 @@ package model;
 
 import auth.Profesor;
 
-public abstract class Actividad {
+public abstract class Actividad implements Cloneable { // Implementa Cloneable
     private int id;
     private String descripcion;
     private String objetivo;
@@ -19,12 +19,9 @@ public abstract class Actividad {
         this.estado = "pendiente";
         this.resultado = "";
         this.esObligatoria = esObligatoria;
-
     }
 
-
-
-	// Método abstracto que será implementado por las subclases
+    // Método abstracto que será implementado por las subclases
     public abstract boolean completar();
 
     // Cambia el estado de la actividad a "completada"
@@ -40,15 +37,19 @@ public abstract class Actividad {
     // Método para clonar una actividad
     public Actividad clonar(Profesor nuevoCreador) {
         try {
-            Actividad clon = (Actividad) this.clone();
+            Actividad clon = (Actividad) this.clone(); // Llama al método clone()
             return clon;
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException("Error al clonar la actividad");
         }
     }
 
-    
-    
+    // Implementación del método clone() para soportar clonación
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone(); // Utiliza la implementación estándar de Object
+    }
+
     public boolean esObligatoria() {
         return esObligatoria;
     }
@@ -56,7 +57,7 @@ public abstract class Actividad {
     public void setObligatoria(boolean esObligatoria) {
         this.esObligatoria = esObligatoria;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -117,6 +118,5 @@ public abstract class Actividad {
     public void setEsObligatoria(boolean esObligatoria) {
         this.esObligatoria = esObligatoria;
     }
-
 }
 
