@@ -5,7 +5,6 @@ import java.util.List;
 public abstract  class Examen extends Evaluacion {
 
     String resultado;
-    int numPreguntas;
 
     public Examen(int id, String descripcion, String objetivo, int duracionEsperada, String preguntas, int calificacionMinima, int numPreguntas, boolean esObligatoria) {
         super(id, descripcion, objetivo, duracionEsperada, preguntas, calificacionMinima, numPreguntas, esObligatoria);
@@ -23,7 +22,7 @@ public abstract  class Examen extends Evaluacion {
         }
 
         // Calcular calificación basada en respuestas correctas
-        int puntaje = (int) correctas / numPreguntas * 10;
+        int puntaje = (int) ((correctas * 10.0) / getNumPreguntas());
         boolean aprobado = puntaje >= getCalificacionMinima();
         if (aprobado) {
             resultado = ("Examen aprobado");
