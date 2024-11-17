@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RecursoTest {
 
     @Test
-    void testCompletarRecurso() {
+    public void testCompletarRecurso() {
         Recurso recurso = new Recurso(1, "Recurso de prueba", "Aprender Java", 30, "video", "https://ejemplo.com", true);
         boolean completado = recurso.completar();
         assertTrue(completado, "El recurso debe marcarse como completado");
@@ -17,7 +17,7 @@ class RecursoTest {
     }
 
     @Test
-    void testGettersYSetters() {
+    public void testGettersYSetters() {
         Recurso recurso = new Recurso(1, "Recurso de prueba", "Aprender Java", 30, "video", "https://ejemplo.com", true);
         recurso.setTipo("artículo");
         assertEquals("artículo", recurso.getTipo(), "El tipo debe ser 'artículo'");

@@ -6,6 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import model.LearningPath;
 import model.QuizVerdaderoFalso;
+import model.Actividad;
+import model.HistorialActividad;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 class LearningPathTest {
 
@@ -14,7 +20,7 @@ class LearningPathTest {
     private QuizVerdaderoFalso quizOpcional;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         // Configuración inicial
         learningPath = new LearningPath(1, "Aprender Java Básico", "Un camino de aprendizaje para principiantes.");
 
@@ -34,14 +40,14 @@ class LearningPathTest {
     }
 
     @Test
-    void testAgregarActividad() {
+    public void testAgregarActividad() {
         assertEquals(2, learningPath.getActividades().size());
         assertTrue(learningPath.getActividades().contains(quizObligatorio));
         assertTrue(learningPath.getActividades().contains(quizOpcional));
     }
 
     @Test
-    void testIniciarActividad() {
+    public void testIniciarActividad() {
         learningPath.iniciarActividad(quizObligatorio);
 
         // Verificar que la actividad haya sido añadida al historial
@@ -52,7 +58,7 @@ class LearningPathTest {
     }
 
     @Test
-    void testCompletarActividad() {
+    public void testCompletarActividad() {
         // Iniciar y completar la actividad
         learningPath.iniciarActividad(quizObligatorio);
         learningPath.completarActividad(quizObligatorio, "Correcto");
@@ -64,7 +70,7 @@ class LearningPathTest {
     }
 
     @Test
-    void testResolverQuizVerdaderoFalso_Correcto() {
+    public void testResolverQuizVerdaderoFalso_Correcto() {
         learningPath.iniciarActividad(quizObligatorio);
         boolean resultado = learningPath.resolverQuizVerdaderoFalso(quizObligatorio, true);
 
@@ -73,7 +79,7 @@ class LearningPathTest {
     }
 
     @Test
-    void testResolverQuizVerdaderoFalso_Incorrecto() {
+    public void testResolverQuizVerdaderoFalso_Incorrecto() {
         learningPath.iniciarActividad(quizObligatorio);
         boolean resultado = learningPath.resolverQuizVerdaderoFalso(quizObligatorio, false);
 
@@ -82,7 +88,7 @@ class LearningPathTest {
     }
 
     @Test
-    void testCalcularProgreso() {
+    public void testCalcularProgreso() {
         // Caso inicial: sin actividades completadas
         assertEquals(0, learningPath.calcularProgreso());
 
@@ -101,12 +107,89 @@ class LearningPathTest {
     }
 
     @Test
-    void testSinActividadesObligatorias() {
+    public void testSinActividadesObligatorias() {
         LearningPath pathSinObligatorias = new LearningPath(2, "Camino sin obligatorias", "Un test adicional.");
         pathSinObligatorias.agregarActividad(quizOpcional);
 
         // Progreso debería ser 100% porque no hay actividades obligatorias
         assertEquals(100, pathSinObligatorias.calcularProgreso());
+    }
+
+    // Nuevas pruebas para los métodos adicionales
+
+    @Test
+    public void testSetActividades() {
+        List<Actividad> nuevasActividades = new ArrayList<>();
+        nuevasActividades.add(quizObligatorio);
+        nuevasActividades.add(quizOpcional);
+        learningPath.setActividades(nuevasActividades);
+
+        assertEquals(2, learningPath.getActividades().size());
+        assertTrue(learningPath.getActividades().contains(quizObligatorio));
+        assertTrue(learningPath.getActividades().contains(quizOpcional));
+    }
+
+    @Test
+    public void testGetProgreso() {
+        // Caso inicial: sin actividades completadas
+        assertEquals(0, learningPath.getProgreso());
+    }
+
+    @Test
+    public void testSetProgreso() {
+        learningPath.setProgreso(50);
+        assertEquals(50, learningPath.getProgreso());
+    }
+
+
+    public void testSetHistorialActividades() {
+        // Crear un historial con una actividad
+        LocalDateTime fechaInicio = LocalDateTime.now();
+        HistorialActividad historial = new HistorialActividad(quizObligatorio, fechaInicio);
+        List<HistorialActividad> nuevoHistorial = new ArrayList<>();
+        nuevoHistorial.add(historial);
+
+        // Establecer el nuevo historial de actividades
+        learningPath.setHistorialActividades(nuevoHistorial);
+
+        // Verificar que se ha asignado correctamente
+        assertEquals(1, learningPath.getHistorialActividades().size());
+        assertEquals(historial, learningPath.getHistorialActividades().get(0));
+    }
+
+
+
+    @Test
+    public void testGetId() {
+        assertEquals(1, learningPath.getId());
+    }
+
+    @Test
+    public void testSetId() {
+        learningPath.setId(3);
+        assertEquals(3, learningPath.getId());
+    }
+
+    @Test
+    public void testGetTitulo() {
+        assertEquals("Aprender Java Básico", learningPath.getTitulo());
+    }
+
+    @Test
+    public void testSetTitulo() {
+        learningPath.setTitulo("Aprender Java Avanzado");
+        assertEquals("Aprender Java Avanzado", learningPath.getTitulo());
+    }
+
+    @Test
+    public void testGetDescripcion() {
+        assertEquals("Un camino de aprendizaje para principiantes.", learningPath.getDescripcion());
+    }
+
+    @Test
+    public void testSetDescripcion() {
+        learningPath.setDescripcion("Un camino de aprendizaje intermedio.");
+        assertEquals("Un camino de aprendizaje intermedio.", learningPath.getDescripcion());
     }
 }
 
