@@ -14,7 +14,7 @@ public class Recurso extends Actividad {
     public boolean completar() {
         this.marcarCompletada();
         this.establecerResultado("Recurso completado");
-        System.out.println("Recurso completado: " + this.getDescripcion());
+
         return true;
     }
 

@@ -18,7 +18,7 @@ public class Quiz extends Evaluacion {
         // Contar respuestas correctas
         for (RespuestaExamen respuesta : respuestas) {
             if (respuesta.getPregunta() instanceof PreguntaAbierta) {
-                System.out.println("Respuesta a pregunta abierta: " + respuesta.getRespuestaEstudiante());
+
             }
             if (respuesta.isCorrecta()) {
                 correctas++;

@@ -12,7 +12,7 @@ public class Tarea extends Actividad {
     public boolean completar() {
         this.marcarCompletada();
         this.establecerResultado("Tarea completada con éxito");
-        System.out.println("Tarea completada: " + this.getDescripcion());
+
         return true;
     }
 
