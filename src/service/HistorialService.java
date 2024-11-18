@@ -16,7 +16,7 @@ public class HistorialService {
     }
 
     // Método para mostrar el historial de actividades en formato legible
-    public void mostrarHistorial(List<HistorialActividad> historialActividades) {
+    public static void mostrarHistorial(List<HistorialActividad> historialActividades) {
         historialActividades.forEach(historial -> System.out.println(historial));
     }
 }
