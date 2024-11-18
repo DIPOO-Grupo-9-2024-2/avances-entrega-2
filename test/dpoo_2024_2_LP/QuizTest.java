@@ -74,5 +74,3 @@ public class QuizTest {
         assertTrue(quiz.completar(), "El quiz debería marcarse como completado");
     }
 }
-
-//Revisar
