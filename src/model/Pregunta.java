@@ -1,15 +1,17 @@
 package model;
 
+import java.util.List;
+
 public class Pregunta {
     private String texto;               // El enunciado de la pregunta
-    private String[] opciones;          // Opciones de respuesta (en caso de ser de opción múltiple)
+    private List<String> opciones;          // Opciones de respuesta (en caso de ser de opción múltiple)
     private String respuestaCorrecta;   // La respuesta correcta
     private String explicacion;         // Explicación de la respuesta correcta
 
     // Constructor
-    public Pregunta(String texto, String[] opciones, String respuestaCorrecta, String explicacion) {
+    public Pregunta(String texto, List<String> list, String respuestaCorrecta, String explicacion) {
         this.texto = texto;
-        this.opciones = opciones;
+        this.opciones = list;
         this.respuestaCorrecta = respuestaCorrecta;
         this.explicacion = explicacion;
     }
@@ -28,11 +30,11 @@ public class Pregunta {
         this.texto = texto;
     }
 
-    public String[] getOpciones() {
+    public List<String> getOpciones() {
         return opciones;
     }
 
-    public void setOpciones(String[] opciones) {
+    public void setOpciones(List<String> opciones) {
         this.opciones = opciones;
     }
 

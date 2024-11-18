@@ -26,7 +26,7 @@ public class Quiz extends Evaluacion {
         }
 
         // Calcular el puntaje basado en respuestas correctas
-        int puntaje = (int) correctas / numPreguntas * 10;
+        int puntaje = (int) ((correctas * 10) / getNumPreguntas());
         boolean aprobado = puntaje >= getCalificacionMinima();
         if (aprobado) {
             resultado = ("Examen aprobado");

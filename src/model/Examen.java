@@ -22,7 +22,7 @@ public abstract  class Examen extends Evaluacion {
         }
 
         // Calcular calificación basada en respuestas correctas
-        int puntaje = (int) ((correctas * 10.0) / getNumPreguntas());
+        int puntaje = (int) ((correctas * 10) / getNumPreguntas());
         boolean aprobado = puntaje >= getCalificacionMinima();
         if (aprobado) {
             resultado = ("Examen aprobado");
