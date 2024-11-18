@@ -13,7 +13,6 @@ public class Encuesta extends Actividad {
         // Simula la lógica de completado de la encuesta
         this.marcarCompletada();
         this.establecerResultado("Encuesta completada");
-        System.out.println("Encuesta completada: " + this.getDescripcion());
         return true;
     }
 
