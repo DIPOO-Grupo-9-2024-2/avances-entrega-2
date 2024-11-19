@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,22 +11,39 @@ public class LearningPath {
     private List<Actividad> actividades;
     private List<HistorialActividad> historialActividades; // Lista de actividades completadas
     private int progreso;
+    private String nivelDificultad;
+    private int duracionMinutos; // Duración calculada en minutos
+    private double rating;
+    private LocalDateTime fechaCreacion;
+    private LocalDateTime fechaModificacion;
+    private String version;
 
-    public LearningPath(int id, String titulo, String descripcion) {
+    // Constructor actualizado con los nuevos atributos
+    public LearningPath(int id, String titulo, String descripcion, String nivelDificultad, int duracionMinutos, double rating, String version) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.actividades = new ArrayList<>();
         this.historialActividades = new ArrayList<>();
         this.progreso = 0;
+        this.nivelDificultad = nivelDificultad;
+        this.duracionMinutos = duracionMinutos;
+        this.rating = rating;
+        this.fechaCreacion = LocalDateTime.now(); // Fecha actual para la creación
+        this.fechaModificacion = LocalDateTime.now(); // Fecha de modificación inicial igual a la creación
+        this.version = version;
     }
-    
-    // Método para iniciar una actividad
+
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	// Método para iniciar una actividad
     public void iniciarActividad(Actividad actividad) {
-        HistorialActividad historial = new HistorialActividad(actividad, java.time.LocalDateTime.now());
+        HistorialActividad historial = new HistorialActividad(actividad, LocalDateTime.now());
         historialActividades.add(historial);
     }
-    
+
     // Método para agregar una actividad al Learning Path
     public void agregarActividad(Actividad actividad) {
         actividades.add(actividad);
@@ -72,11 +90,6 @@ public class LearningPath {
         return esCorrecto;
     }
 
-    // Getter para obtener el historial de actividades completadas
-    public List<HistorialActividad> getHistorialActividades() {
-        return historialActividades;
-    }
-
     // Getters y setters adicionales
     public int getId() {
         return id;
@@ -117,11 +130,59 @@ public class LearningPath {
     public void setProgreso(int progreso) {
         this.progreso = progreso;
     }
+    public List<HistorialActividad> getHistorialActividades() {
+        return historialActividades;
+    }
 
     public void setHistorialActividades(List<HistorialActividad> historialActividades) {
         this.historialActividades = historialActividades;
     }
+
+    public String getNivelDificultad() {
+        return nivelDificultad;
+    }
+
+    public void setNivelDificultad(String nivelDificultad) {
+        this.nivelDificultad = nivelDificultad;
+    }
+
+    public int getDuracionMinutos() {
+        return duracionMinutos;
+    }
+
+    public void setDuracionMinutos(int duracionMinutos) {
+        this.duracionMinutos = duracionMinutos;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public LocalDateTime getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+    public void setFechaModificacion(LocalDateTime fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 }
+
 
 
 

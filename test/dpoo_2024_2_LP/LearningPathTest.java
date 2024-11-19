@@ -25,7 +25,8 @@ class LearningPathTest {
     @BeforeEach
     public void setUp() {
         // Configuración inicial
-        learningPath = new LearningPath(1, "Aprender Java Básico", "Un camino de aprendizaje para principiantes.");
+        learningPath = new LearningPath(1, "Aprender Java Básico", "Un camino de aprendizaje para principiantes.", "Básico", 120, 4.8, "1.0")
+;
         learningPathService = new LearningPathService();  // Crear una instancia de LearningPathService
 
         // Crear actividades para pruebas
@@ -109,10 +110,19 @@ class LearningPathTest {
         learningPath.agregarActividad(otroQuiz);
         assertEquals(50, learningPath.calcularProgreso()); // Progreso debe ser 50%
     }
-
+   
     @Test
     public void testSinActividadesObligatorias() {
-        LearningPath pathSinObligatorias = new LearningPath(2, "Camino sin obligatorias", "Un test adicional.");
+        LearningPath pathSinObligatorias = new LearningPath(
+        	    2,                                  
+        	    "Camino sin obligatorias",          
+        	    "Un test adicional.",               
+        	    "Intermedio",                       
+        	    90,                                
+        	    4.2,                                
+        	    "1.0"                               
+        	);
+
         pathSinObligatorias.agregarActividad(quizOpcional);
 
         // Progreso debería ser 100% porque no hay actividades obligatorias

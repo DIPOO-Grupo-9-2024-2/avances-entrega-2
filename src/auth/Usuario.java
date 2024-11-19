@@ -3,7 +3,7 @@ package auth;
 import java.util.List;
 
 public abstract class Usuario {
-    private int id;
+    protected int id;
     private String nombre;
     private String email;
     private String contraseña;

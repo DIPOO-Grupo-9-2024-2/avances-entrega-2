@@ -18,6 +18,6 @@ public class EvaluacionService {
     public void agregarFeedback(Evaluacion evaluacion, String comentario, int calificacion) {
         Feedback feedback = new Feedback(comentario, calificacion);
         // Aquí podríamos almacenar o asociar el feedback a la evaluación
-        System.out.println("Feedback añadido: " + feedback);
+
     }
 }

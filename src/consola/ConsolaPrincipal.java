@@ -171,8 +171,14 @@ public class ConsolaPrincipal extends ConsolaBasica {
                 int id = Integer.parseInt(partes[1]);
                 String titulo = partes[2];
                 String descripcion = partes [3];
-                LearningPath nuevoLP = new LearningPath(id, titulo, descripcion);
+                String nivelDificultad=partes[4];
+                int duracionMinutos=Integer.parseInt(partes[5]);
+                double rating= Double.parseDouble(partes[5]);
 
+                String version=partes[7];
+              
+                LearningPath nuevoLP = new LearningPath(id, titulo, descripcion, nivelDificultad, duracionMinutos, rating, version);
+               
                 learningPaths.add(nuevoLP);
                 
             }
