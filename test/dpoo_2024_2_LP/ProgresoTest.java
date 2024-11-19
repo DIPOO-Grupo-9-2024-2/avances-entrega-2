@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import model.Progreso;
 
-
 class ProgresoTest {
 
     private Progreso progreso;
@@ -31,5 +30,35 @@ class ProgresoTest {
     public void testCalculoConTotalActividadesCero() {
         Progreso progresoCero = new Progreso(0, 0);
         assertEquals(0, progresoCero.getPorcentajeProgreso(), "El porcentaje de progreso debería ser 0% si totalActividades es 0");
+    }
+
+    // Nuevos tests para los setters y getters
+
+    @Test
+    public void testSetPorcentajeProgreso() {
+        progreso.setPorcentajeProgreso(50);
+        assertEquals(50, progreso.getPorcentajeProgreso(), "El porcentaje de progreso debería establecerse correctamente");
+    }
+
+    @Test
+    public void testSetActividadesCompletadas() {
+        progreso.setActividadesCompletadas(5);
+        assertEquals(5, progreso.getActividadesCompletadas(), "El número de actividades completadas debería establecerse correctamente");
+    }
+
+    @Test
+    public void testSetTotalActividades() {
+        progreso.setTotalActividades(20);
+        assertEquals(20, progreso.getTotalActividades(), "El número total de actividades debería establecerse correctamente");
+    }
+
+    @Test
+    public void testGetTotalActividades() {
+        assertEquals(10, progreso.getTotalActividades(), "El número total de actividades debería ser igual a 10 inicialmente");
+    }
+
+    @Test
+    public void testGetActividadesCompletadas() {
+        assertEquals(2, progreso.getActividadesCompletadas(), "El número de actividades completadas debería ser igual a 2 inicialmente");
     }
 }

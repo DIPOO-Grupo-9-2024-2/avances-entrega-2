@@ -14,6 +14,7 @@ public class Autenticacion {
 
     // Método para registrar un usuario (opcional si se quiere manejar registro manual)
     public void registrarUsuario(Usuario usuario) {
+        System.out.println("Registrando usuario: " + usuario.getEmail());
         usuariosRegistrados.put(usuario.getEmail(), usuario);
     }
 
@@ -29,6 +30,7 @@ public class Autenticacion {
         }
     }
 
+
     // Método para logout (puede ser mejorado si se implementan sesiones más complejas)
     public void logout(Usuario usuario) {
         System.out.println("Cierre de sesión para: " + usuario.getNombre());
@@ -37,10 +39,14 @@ public class Autenticacion {
 
     // Método para cambiar la contraseña de un usuario
     public void cambiarContraseña(Usuario usuario, String nuevaContraseña) {
-        usuario.setContraseña(nuevaContraseña);
-        System.out.println("Contraseña actualizada para: " + usuario.getNombre());
+        if (usuariosRegistrados.containsKey(usuario.getEmail())) {
+            usuario.setContraseña(nuevaContraseña); // Cambiar la contraseña
+            System.out.println("Contraseña actualizada para: " + usuario.getEmail());
+        } else {
+            System.out.println("Usuario no encontrado.");
+        }
     }
-    
+
     // Método para obtener usuarios
     public Map<String, Usuario> getUsuariosRegistrados() {
         return usuariosRegistrados;
@@ -51,4 +57,5 @@ public class Autenticacion {
         return usuariosRegistrados.get(email);
     }
 }
+
 

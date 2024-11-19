@@ -8,7 +8,7 @@ public abstract class Usuario {
     private String email;
     private String contraseña;
     private String rol;
-    private List<String> intereses;
+    protected List<String> intereses;
 
     public Usuario(int id, String email, String contraseña, String nombre,  String rol, List<String> intereses) {
         this.id = id;
