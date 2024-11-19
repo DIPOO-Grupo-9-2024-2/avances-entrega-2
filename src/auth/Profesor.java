@@ -3,8 +3,6 @@ package auth;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
-
 import model.Actividad;
 import model.Calificacion;
 import model.LearningPath;
@@ -35,10 +33,7 @@ public class Profesor extends Usuario {
             lp.setDescripcion(nuevaDescripcion);
             lp.setNivelDificultad(nuevoNivelDificultad);
             lp.setDuracionMinutos(nuevaDuracion);
-            lp.setFechaModificacion(LocalDateTime.now()); // Usa LocalDateTime para establecer la fecha actual
-            System.out.println("Learning Path actualizado correctamente.");
-        } else {
-            System.out.println("Error: No tienes permisos para editar este Learning Path.");
+            lp.setFechaModificacion(LocalDateTime.now());
         }
     }
 
@@ -48,17 +43,15 @@ public class Profesor extends Usuario {
         }
     }
 
-    public void calificarActividad(Actividad actividad, Estudiante estudiante, int calificacion, String feedback) {
-        Calificacion calif = new Calificacion(calificacion, feedback);
-        estudiante.actualizarProgreso(actividad, calif);
-        System.out.println("Actividad calificada correctamente.");
+    public void calificarActividad(Actividad actividad, Estudiante estudiante, int nota, String feedback) {
+        // Obtener o crear el progreso del estudiante para la actividad
+        Progreso progreso = estudiante.getProgreso(actividad);
+
+        // Crear la calificación
+        Calificacion calificacion = new Calificacion(nota, feedback);
+
+        // Asignar la calificación al progreso
+        progreso.setCalificacion(calificacion);
     }
 
-    public List<Progreso> verProgresoEstudiantes(LearningPath lp) {
-        List<Progreso> progresos = new ArrayList<>();
-        for (Estudiante estudiante : lp.getEstudiantesInscritos()) {
-            progresos.add(estudiante.getProgreso(lp));
-        }
-        return progresos;
-    }
 }

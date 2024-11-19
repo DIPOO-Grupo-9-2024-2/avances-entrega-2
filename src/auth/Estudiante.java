@@ -3,18 +3,19 @@ package auth;
 import java.util.ArrayList;
 import java.util.List;
 import model.LearningPath;
-import model.Actividad; // Importa la clase Actividad
+import model.Actividad;
 import model.Calificacion;
+import model.Progreso;
 
 public class Estudiante extends Usuario {
     private List<LearningPath> learningPathsInscritos;
     private List<Actividad> actividadesInscritas;  // Lista de actividades
-	private ArrayList<Object> calificaciones;
+    private ArrayList<Object> calificaciones;
 
     public Estudiante(int id, String email, String contraseña, String nombre, String rol, List<String> intereses) {
         super(id, email, contraseña, nombre, rol, intereses);
         this.learningPathsInscritos = new ArrayList<>();
-        this.actividadesInscritas = new ArrayList<>(); 
+        this.actividadesInscritas = new ArrayList<>();
         this.calificaciones = new ArrayList<>();
     }
 
@@ -42,6 +43,21 @@ public class Estudiante extends Usuario {
         return recomendados;
     }
 
+    // Nuevo método para obtener el progreso de una actividad
+    public Progreso getProgreso(Actividad actividad) {
+        int totalActividades = actividadesInscritas.size();
+        int actividadesCompletadas = 0;
+
+        // Simulación: Contar actividades completadas (puedes ajustarlo según la lógica real)
+        for (Actividad act : actividadesInscritas) {
+            if (act.equals(actividad)) { // Puedes agregar condiciones más específicas si es necesario
+                actividadesCompletadas++;
+            }
+        }
+
+        return new Progreso(totalActividades, actividadesCompletadas);
+    }
+
     // Getters y setters
     public List<LearningPath> getLearningPathsInscritos() {
         return learningPathsInscritos;
@@ -58,11 +74,10 @@ public class Estudiante extends Usuario {
     public void setActividadesInscritas(List<Actividad> actividadesInscritas) {
         this.actividadesInscritas = actividadesInscritas;
     }
-    public void actualizarProgreso(Actividad actividad, Calificacion calificacion) {
 
+    public void actualizarProgreso(Actividad actividad, Calificacion calificacion) {
         calificaciones.add(calificacion);
-        
+    }
 }
-    
-}
+
 

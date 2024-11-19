@@ -10,6 +10,11 @@ public class Calificacion {
         this.feedback = feedback;
     }
 
+    // Método adicional: Devuelve la nota (para compatibilidad con el test)
+    public int getCalificacion() {
+        return nota;
+    }
+
     // Getters y setters
     public int getNota() {
         return nota;

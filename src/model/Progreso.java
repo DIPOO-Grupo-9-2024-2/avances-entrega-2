@@ -1,9 +1,11 @@
 package model;
+import model.Calificacion;
 
 public class Progreso {
     private int totalActividades;
     private int actividadesCompletadas;
     private int porcentajeProgreso;
+    private Calificacion calificacion; // Nuevo atributo
 
     public Progreso(int totalActividades, int actividadesCompletadas) {
         this.totalActividades = totalActividades;
@@ -18,6 +20,16 @@ public class Progreso {
         } else {
             this.porcentajeProgreso = 0;
         }
+    }
+
+    // Método para asignar una calificación
+    public void setCalificacion(Calificacion calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    // Método para obtener la calificación
+    public Calificacion getCalificacion() {
+        return calificacion;
     }
 
     // Método para marcar una actividad como completada
@@ -51,3 +63,4 @@ public class Progreso {
         this.porcentajeProgreso = porcentajeProgreso;
     }
 }
+
