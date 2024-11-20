@@ -8,7 +8,7 @@ public class HistorialActividad {
     private LocalDateTime fechaInicio;
     private LocalDateTime fechaCompletada;
     private String resultado;
-    private Duration tiempoDedicado; // Nueva métrica para el tiempo dedicado
+    private Duration tiempoDedicado; 
 
 
     public HistorialActividad(Actividad actividad, LocalDateTime fechaInicio) {
@@ -48,7 +48,7 @@ public class HistorialActividad {
         return tiempoDedicado;
     }
     
-    // Método para completar la actividad
+
     public void completar(String resultado) {
         this.fechaCompletada = LocalDateTime.now();
         this.resultado = resultado;

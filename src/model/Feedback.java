@@ -2,14 +2,14 @@ package model;
 
 public class Feedback {
     private String comentario;
-    private int calificacion; // Rango de 1 a 5, por ejemplo
+    private int calificacion; 
 
     public Feedback(String comentario, int calificacion) {
         this.comentario = comentario;
         this.calificacion = calificacion;
     }
 
-    // Getters y setters
+
     public String getComentario() {
         return comentario;
     }

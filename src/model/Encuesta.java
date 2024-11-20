@@ -10,13 +10,13 @@ public class Encuesta extends Actividad {
 
     @Override
     public boolean completar() {
-        // Simula la lógica de completado de la encuesta
+
         this.marcarCompletada();
         this.establecerResultado("Encuesta completada");
         return true;
     }
 
-    // Getters y setters
+
     public String getPreguntasAbiertas() {
         return preguntasAbiertas;
     }

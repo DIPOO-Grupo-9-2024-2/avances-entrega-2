@@ -9,8 +9,8 @@ import model.Progreso;
 
 public class Estudiante extends Usuario {
     private List<LearningPath> learningPathsInscritos;
-    private List<Actividad> actividadesInscritas;  // Lista de actividades
-    private ArrayList<Object> calificaciones;
+    private List<Actividad> actividadesInscritas; 
+    public ArrayList<Object> calificaciones;
 
     public Estudiante(int id, String email, String contraseña, String nombre, String rol, List<String> intereses) {
         super(id, email, contraseña, nombre, rol, intereses);
@@ -19,17 +19,17 @@ public class Estudiante extends Usuario {
         this.calificaciones = new ArrayList<>();
     }
 
-    // Método para inscribirse en un Learning Path
+
     public void inscribirLearningPath(LearningPath learningPath) {
         learningPathsInscritos.add(learningPath);
     }
 
-    // Método para inscribirse en una actividad
+
     public void inscribirActividad(Actividad actividad) {
-        actividadesInscritas.add(actividad);  // Agrega la actividad a la lista
+        actividadesInscritas.add(actividad);  
     }
 
-    // Método para obtener recomendaciones en base a intereses
+
     public List<LearningPath> recomendarLearningPaths(List<LearningPath> todosLosLearningPaths) {
         List<LearningPath> recomendados = new ArrayList<>();
         for (LearningPath lp : todosLosLearningPaths) {
@@ -43,14 +43,14 @@ public class Estudiante extends Usuario {
         return recomendados;
     }
 
-    // Nuevo método para obtener el progreso de una actividad
+
     public Progreso getProgreso(Actividad actividad) {
         int totalActividades = actividadesInscritas.size();
         int actividadesCompletadas = 0;
 
-        // Simulación: Contar actividades completadas (puedes ajustarlo según la lógica real)
+
         for (Actividad act : actividadesInscritas) {
-            if (act.equals(actividad)) { // Puedes agregar condiciones más específicas si es necesario
+            if (act.equals(actividad)) { 
                 actividadesCompletadas++;
             }
         }
@@ -58,7 +58,17 @@ public class Estudiante extends Usuario {
         return new Progreso(totalActividades, actividadesCompletadas);
     }
 
-    // Getters y setters
+
+    public void actualizarProgreso(Actividad actividad, Calificacion calificacion) {
+        calificaciones.add(calificacion);
+    }
+
+
+    public ArrayList<Object> getCalificaciones() {
+        return calificaciones;
+    }
+
+
     public List<LearningPath> getLearningPathsInscritos() {
         return learningPathsInscritos;
     }
@@ -74,10 +84,7 @@ public class Estudiante extends Usuario {
     public void setActividadesInscritas(List<Actividad> actividadesInscritas) {
         this.actividadesInscritas = actividadesInscritas;
     }
-
-    public void actualizarProgreso(Actividad actividad, Calificacion calificacion) {
-        calificaciones.add(calificacion);
-    }
 }
+
 
 

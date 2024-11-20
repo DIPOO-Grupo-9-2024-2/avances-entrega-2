@@ -3,9 +3,9 @@ package model;
 import java.util.List;
 
 public abstract class Evaluacion extends Actividad {
-    private String preguntas;   // Lista de preguntas asociadas a la evaluación
-    private int calificacionMinima;   // Calificación mínima requerida para aprobar la evaluación
-    private int numPreguntas; // Número de preguntas de la evaluación
+    private String preguntas;
+    private int calificacionMinima;   
+    private int numPreguntas; 
 
     public Evaluacion(int id, String descripcion, String objetivo, int duracionEsperada, String preguntas, int calificacionMinima, int numPreguntas, boolean esObligatoria) {
         super(id, descripcion, objetivo, duracionEsperada, esObligatoria);
@@ -14,10 +14,9 @@ public abstract class Evaluacion extends Actividad {
         this.numPreguntas = numPreguntas;
     }
 
-    // Método abstracto que las subclases deben implementar para calificar la evaluación
+
     public abstract Calificacion calificar(List<RespuestaExamen> respuestas);
 
-    // Getters y setters para acceder a los atributos
     public String getPreguntas() {
         return preguntas;
     }

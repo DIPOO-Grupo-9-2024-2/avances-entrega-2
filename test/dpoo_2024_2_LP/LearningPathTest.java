@@ -24,12 +24,10 @@ class LearningPathTest {
 
     @BeforeEach
     public void setUp() {
-        // Configuración inicial
+
         learningPath = new LearningPath(1, "Aprender Java Básico", "Un camino de aprendizaje para principiantes.", "Básico", 120, 4.8, "1.0")
 ;
-        learningPathService = new LearningPathService();  // Crear una instancia de LearningPathService
-
-        // Crear actividades para pruebas
+        learningPathService = new LearningPathService();  
         quizObligatorio = new QuizVerdaderoFalso(
             1, "¿Java es un lenguaje de programación orientado a objetos?",
             "Evaluar conocimientos básicos de Java", 10, true, true
@@ -55,7 +53,6 @@ class LearningPathTest {
     public void testIniciarActividad() {
         learningPath.iniciarActividad(quizObligatorio);
 
-        // Verificar que la actividad haya sido añadida al historial
         assertEquals(1, learningPath.getHistorialActividades().size());
         assertEquals(quizObligatorio, learningPath.getHistorialActividades().get(0).getActividad());
         assertNotNull(learningPath.getHistorialActividades().get(0).getFechaInicio());
@@ -64,11 +61,11 @@ class LearningPathTest {
 
     @Test
     public void testCompletarActividad() {
-        // Iniciar y completar la actividad
+
         learningPath.iniciarActividad(quizObligatorio);
         learningPath.completarActividad(quizObligatorio, "Correcto");
 
-        // Verificar que la actividad fue completada
+
         assertEquals(1, learningPath.getHistorialActividades().size());
         assertEquals("Correcto", learningPath.getHistorialActividades().get(0).getResultado());
         assertNotNull(learningPath.getHistorialActividades().get(0).getFechaCompletada());
@@ -94,21 +91,20 @@ class LearningPathTest {
 
     @Test
     public void testCalcularProgreso() {
-        // Caso inicial: sin actividades completadas
+
         assertEquals(0, learningPath.calcularProgreso());
 
-        // Completar la actividad obligatoria
+
         learningPath.iniciarActividad(quizObligatorio);
         learningPath.completarActividad(quizObligatorio, "Correcto");
         assertEquals(100, learningPath.calcularProgreso());
 
-        // Agregar otra actividad obligatoria y no completarla
         QuizVerdaderoFalso otroQuiz = new QuizVerdaderoFalso(
             3, "¿Es posible usar herencia en Java?",
             "Evaluar conocimientos intermedios", 15, true, true
         );
         learningPath.agregarActividad(otroQuiz);
-        assertEquals(50, learningPath.calcularProgreso()); // Progreso debe ser 50%
+        assertEquals(50, learningPath.calcularProgreso()); 
     }
    
     @Test
@@ -124,8 +120,6 @@ class LearningPathTest {
         	);
 
         pathSinObligatorias.agregarActividad(quizOpcional);
-
-        // Progreso debería ser 100% porque no hay actividades obligatorias
         assertEquals(100, pathSinObligatorias.calcularProgreso());
     }
 
@@ -143,7 +137,7 @@ class LearningPathTest {
 
     @Test
     public void testGetProgreso() {
-        // Caso inicial: sin actividades completadas
+
         assertEquals(0, learningPath.getProgreso());
     }
 
@@ -155,85 +149,80 @@ class LearningPathTest {
 
     @Test
     public void testSetHistorialActividades() {
-        // Crear un historial con una actividad
+
         LocalDateTime fechaInicio = LocalDateTime.now();
         HistorialActividad historial = new HistorialActividad(quizObligatorio, fechaInicio);
         List<HistorialActividad> nuevoHistorial = new ArrayList<>();
         nuevoHistorial.add(historial);
 
-        // Establecer el nuevo historial de actividades
+
         learningPath.setHistorialActividades(nuevoHistorial);
 
-        // Verificar que se ha asignado correctamente
+
         assertEquals(1, learningPath.getHistorialActividades().size());
         assertEquals(historial, learningPath.getHistorialActividades().get(0));
     }
 
-    // Nuevas pruebas para LearningPathService
+
 
     @Test
     public void testAgregarActividadService() {
         learningPathService.agregarActividad(learningPath, quizObligatorio);
-        assertEquals(3, learningPath.getActividades().size());  // Debe agregar una actividad más
+        assertEquals(3, learningPath.getActividades().size()); 
     }
 
     @Test
     public void testActualizarProgreso() {
         learningPathService.actualizarProgreso(learningPath);
-        // Se espera que el progreso esté actualizado, pero por ahora se valida visualmente
+
         assertNotNull(learningPathService.obtenerProgreso());
     }
 
     @Test
     public void testRegistrarActividadCompletada() {
         learningPathService.registrarActividadCompletada(learningPath, quizObligatorio, "Correcto");
-        assertEquals(1, learningPath.getHistorialActividades().size());  // Debe agregar al historial
+        assertEquals(1, learningPath.getHistorialActividades().size()); 
     }
 
     @Test
     public void testObtenerProgreso() {
-        // Crear una instancia de Progreso para el LearningPath
-        Progreso progreso = new Progreso(3, 0); // Suponiendo que el LearningPath tiene 3 actividades, y ninguna completada al principio.
-        
-        // Inicializamos el progreso en el LearningPathService
+
+        Progreso progreso = new Progreso(3, 0); 
+
         learningPathService.agregarActividad(learningPath, quizObligatorio);
         learningPathService.actualizarProgreso(learningPath);
         
-        // Agregar una actividad completada
-        progreso.completarActividad(); // Marcamos una actividad como completada
 
-        // Verificamos que el progreso es 33% si solo una de tres actividades está completada
+        progreso.completarActividad(); 
         assertEquals(33, progreso.getPorcentajeProgreso());
     }
 
     @Test
     public void testEnviarNotificacionPendiente() {
         learningPathService.enviarNotificacionPendiente(learningPath);
-        // Verifica visualmente que la notificación ha sido enviada
+
     }
 
 
   
     @Test
     public void testCalcularTasasExitoFracaso() {
-        // Crear historial de actividades con resultados
+
         HistorialActividad historial1 = new HistorialActividad(quizObligatorio, LocalDateTime.now());
-        historial1.setResultado("Aprobado");  // Suponiendo que "Aprobado" indica éxito
+        historial1.setResultado("Aprobado");  
         
         HistorialActividad historial2 = new HistorialActividad(quizOpcional, LocalDateTime.now());
-        historial2.setResultado("Reprobado"); // "Reprobado" indica fracaso
+        historial2.setResultado("Reprobado"); 
 
-        // Agregar los elementos al historial de actividades del LearningPath
+
         List<HistorialActividad> historialActividades = learningPath.getHistorialActividades();
         historialActividades.add(historial1);
         historialActividades.add(historial2);
-
-        // Calcular tasas de éxito y fracaso
         learningPathService.calcularTasasExitoFracaso(learningPath);
 
-        // Verificar visualmente si la tasa de éxito y fracaso se calcularon correctamente
-        assertTrue(historialActividades.size() > 0);  // Verifica que el historial contiene actividades
-        // Se espera que el servicio calcule las tasas correctamente internamente
+
+        assertTrue(historialActividades.size() > 0); 
+
     }
 
 

@@ -44,13 +44,12 @@ public class Profesor extends Usuario {
     }
 
     public void calificarActividad(Actividad actividad, Estudiante estudiante, int nota, String feedback) {
-        // Obtener o crear el progreso del estudiante para la actividad
+
         Progreso progreso = estudiante.getProgreso(actividad);
 
-        // Crear la calificación
+
         Calificacion calificacion = new Calificacion(nota, feedback);
 
-        // Asignar la calificación al progreso
         progreso.setCalificacion(calificacion);
     }
 

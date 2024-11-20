@@ -12,7 +12,7 @@ class CalificacionTest {
 
     @BeforeEach
     public void setUp() {
-        // Configura una calificación inicial
+    
         calificacion = new Calificacion(8, "Aprobado");
     }
 
@@ -46,10 +46,10 @@ class CalificacionTest {
 
     @Test
     public void testCalificarEvaluacion() {
-        // Simulamos una calificación sin usar la clase Evaluacion
+
         Calificacion resultado = new Calificacion(8, "Aprobado");
 
-        // Verifica si la calificación fue correcta
+
         assertNotNull(resultado, "La calificación no debe ser nula");
         assertEquals(8, resultado.getNota(), "La nota de la calificación debería ser 8");
         assertEquals("Aprobado", resultado.getFeedback(), "El feedback de la calificación debería ser 'Aprobado'");

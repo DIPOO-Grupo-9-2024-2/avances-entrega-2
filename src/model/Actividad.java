@@ -2,7 +2,7 @@ package model;
 
 import auth.Profesor;
 
-public abstract class Actividad implements Cloneable { // Implementa Cloneable
+public abstract class Actividad implements Cloneable { 
     private int id;
     private String descripcion;
     private String objetivo;
@@ -21,33 +21,33 @@ public abstract class Actividad implements Cloneable { // Implementa Cloneable
         this.esObligatoria = esObligatoria;
     }
 
-    // Método abstracto que será implementado por las subclases
+
     public abstract boolean completar();
 
-    // Cambia el estado de la actividad a "completada"
+ 
     public void marcarCompletada() {
         this.estado = "completada";
     }
 
-    // Cambia el resultado de la actividad
+
     public void establecerResultado(String resultado) {
         this.resultado = resultado;
     }
 
-    // Método para clonar una actividad
+
     public Actividad clonar(Profesor nuevoCreador) {
         try {
-            Actividad clon = (Actividad) this.clone(); // Llama al método clone()
+            Actividad clon = (Actividad) this.clone(); 
             return clon;
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException("Error al clonar la actividad");
         }
     }
 
-    // Implementación del método clone() para soportar clonación
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        return super.clone(); // Utiliza la implementación estándar de Object
+        return super.clone(); 
     }
 
     public boolean esObligatoria() {

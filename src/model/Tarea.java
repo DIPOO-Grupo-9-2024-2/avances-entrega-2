@@ -16,7 +16,6 @@ public class Tarea extends Actividad {
         return true;
     }
 
-    // Getters y setters
     public String getInstrucciones() {
         return instrucciones;
     }

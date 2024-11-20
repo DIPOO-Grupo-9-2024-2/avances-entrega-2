@@ -11,13 +11,13 @@ import model.Progreso;
 public class LearningPathService {
     private Progreso progreso;
 
-    // Método para agregar una actividad al Learning Path
+
     public void agregarActividad(LearningPath learningPath, Actividad actividad) {
         learningPath.agregarActividad(actividad);
         actualizarProgreso(learningPath);
     }
 
-    // Método para calcular el progreso y actualizar la clase Progreso
+
     public void actualizarProgreso(LearningPath learningPath) {
         int totalActividades = learningPath.getActividades().size();
         int actividadesCompletadas = (int) learningPath.getActividades().stream()
@@ -26,20 +26,18 @@ public class LearningPathService {
         progreso = new Progreso(totalActividades, actividadesCompletadas);
         System.out.println("Progreso actualizado: " + progreso.getPorcentajeProgreso() + "%");
     }
-
-    // Método para registrar una actividad completada
     public void registrarActividadCompletada(LearningPath learningPath, Actividad actividad, String resultado) {
         HistorialActividad historial = new HistorialActividad(actividad, LocalDateTime.now());
         learningPath.getHistorialActividades().add(historial);
         actualizarProgreso(learningPath);
     }
 
-    // Obtener el progreso en porcentaje
+
     public int obtenerProgreso() {
         return progreso.getPorcentajeProgreso();
     }
     
-    // Método para enviar notificación a un estudiante sobre actividades pendientes
+
     public void enviarNotificacionPendiente(LearningPath learningPath) {
         List<Actividad> actividadesPendientes = learningPath.getActividades().stream()
             .filter(actividad -> actividad.getEstado().equals("pendiente"))
@@ -50,8 +48,7 @@ public class LearningPathService {
             System.out.println("Notificación enviada: " + notificacion);
         }
     }
-    
-    // Método para calcular las tasas de éxito/fracaso
+
     public void calcularTasasExitoFracaso(LearningPath learningPath) {
         List<HistorialActividad> historialActividades = learningPath.getHistorialActividades();
         int totalActividades = historialActividades.size();

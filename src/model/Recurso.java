@@ -1,8 +1,8 @@
 package model;
 
 public class Recurso extends Actividad {
-    private String tipo;  // Tipo de recurso, por ejemplo, "video", "artículo"
-    private String fuente; // URL o fuente del recurso
+    private String tipo;  
+    private String fuente;
 
     public Recurso(int id, String descripcion, String objetivo, int duracionEsperada, String tipo, String fuente, boolean esObligatoria) {
         super(id, descripcion, objetivo, duracionEsperada, esObligatoria);
@@ -18,7 +18,6 @@ public class Recurso extends Actividad {
         return true;
     }
 
-    // Getters y setters
     public String getTipo() {
         return tipo;
     }

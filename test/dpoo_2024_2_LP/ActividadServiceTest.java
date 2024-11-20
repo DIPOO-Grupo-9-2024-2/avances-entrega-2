@@ -26,10 +26,9 @@ public class ActividadServiceTest {
         historialService = new HistorialService();
         historialActividades = new ArrayList<>();
 
-        // Crear una actividad concreta
+
         actividad = new ActividadConcreta(1, "Estudiar Matemáticas", "Aprender álgebra", 120, true);
 
-        // Crear un historial inicial de actividades
         historialActividades.add(new HistorialActividad(actividad, LocalDateTime.of(2024, 11, 15, 0, 0)));
     }
 
@@ -116,7 +115,7 @@ public class ActividadServiceTest {
         assertEquals("en progreso", actividad.getEstado());
     }
 
-    // Nuevos tests para HistorialService
+
     @Test
     public void testListarHistorial() {
         List<HistorialActividad> resultado = historialService.listarHistorial(historialActividades);

@@ -27,25 +27,24 @@ public class Administrador extends Usuario {
     }
  
     public void gestionarLearningPaths(List<LearningPath> learningPaths) {
-        // Crear un nuevo Learning Path usando el nuevo constructor
         LearningPath nuevoLearningPath = new LearningPath(
-            101,                               // id
-            "Nuevo Learning Path",             // título
-            "Este es un aprendizaje básico.",  // descripción
-            "Básico",                          // nivel de dificultad
-            120,                               // duración en minutos
-            4.5,                               // rating
-            "1.0"                              // versión
+            101,                               
+            "Nuevo Learning Path",             
+            "Este es un aprendizaje básico.", 
+            "Básico",                          
+            120,                              
+            4.5,                               
+            "1.0"                              
         );
         learningPaths.add(nuevoLearningPath);
 
-        // Modificar el título del primer Learning Path si la lista no está vacía
+
         if (!learningPaths.isEmpty()) {
             LearningPath lpModificar = learningPaths.get(0);
             lpModificar.setTitulo("Learning Path Modificado");
         }
 
-        // Eliminar el último Learning Path de la lista si no está vacía
+
         if (!learningPaths.isEmpty()) {
             learningPaths.remove(learningPaths.size() - 1);
         }

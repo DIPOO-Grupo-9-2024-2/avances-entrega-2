@@ -9,16 +9,16 @@ public class LearningPath {
     private String titulo;
     private String descripcion;
     private List<Actividad> actividades;
-    private List<HistorialActividad> historialActividades; // Lista de actividades completadas
+    private List<HistorialActividad> historialActividades; 
     private int progreso;
     private String nivelDificultad;
-    private int duracionMinutos; // Duración calculada en minutos
+    private int duracionMinutos; 
     private double rating;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaModificacion;
     private String version;
 
-    // Constructor actualizado con los nuevos atributos
+
     public LearningPath(int id, String titulo, String descripcion, String nivelDificultad, int duracionMinutos, double rating, String version) {
         this.id = id;
         this.titulo = titulo;
@@ -29,8 +29,8 @@ public class LearningPath {
         this.nivelDificultad = nivelDificultad;
         this.duracionMinutos = duracionMinutos;
         this.rating = rating;
-        this.fechaCreacion = LocalDateTime.now(); // Fecha actual para la creación
-        this.fechaModificacion = LocalDateTime.now(); // Fecha de modificación inicial igual a la creación
+        this.fechaCreacion = LocalDateTime.now(); 
+        this.fechaModificacion = LocalDateTime.now(); 
         this.version = version;
     }
 
@@ -38,18 +38,18 @@ public class LearningPath {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	// Método para iniciar una actividad
+
     public void iniciarActividad(Actividad actividad) {
         HistorialActividad historial = new HistorialActividad(actividad, LocalDateTime.now());
         historialActividades.add(historial);
     }
 
-    // Método para agregar una actividad al Learning Path
+
     public void agregarActividad(Actividad actividad) {
         actividades.add(actividad);
     }
 
-    // Método para calcular el progreso basado en actividades obligatorias completadas
+
     public int calcularProgreso() {
         int actividadesObligatorias = 0;
         int actividadesCompletadas = 0;
@@ -67,12 +67,12 @@ public class LearningPath {
         if (actividadesObligatorias > 0) {
             this.progreso = (actividadesCompletadas * 100) / actividadesObligatorias;
         } else {
-            this.progreso = 100;  // Si no hay actividades obligatorias, el progreso es 100%
+            this.progreso = 100; 
         }
         return this.progreso;
     }
 
-    // Método para registrar la actividad completada con tiempo dedicado
+
     public void completarActividad(Actividad actividad, String resultado) {
         for (HistorialActividad historial : historialActividades) {
             if (historial.getActividad().equals(actividad) && historial.getFechaCompletada() == null) {
@@ -82,7 +82,7 @@ public class LearningPath {
         }
     }
 
-    // Nuevo método para resolver un Quiz de Verdadero/Falso
+
     public boolean resolverQuizVerdaderoFalso(QuizVerdaderoFalso quiz, boolean respuesta) {
         boolean esCorrecto = quiz.evaluar(respuesta);
         String resultado = esCorrecto ? "Correcto" : "Incorrecto";
@@ -90,7 +90,7 @@ public class LearningPath {
         return esCorrecto;
     }
 
-    // Getters y setters adicionales
+
     public int getId() {
         return id;
     }

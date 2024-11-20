@@ -1,21 +1,21 @@
 package model;
 
 public class Calificacion {
-    private int nota;     // Nota obtenida en la evaluación
-    private String feedback; // Mensaje que indica si aprobó o no
+    private int nota;     
+    private String feedback; 
 
-    // Constructor que inicializa la nota y el feedback
+
     public Calificacion(int nota, String feedback) {
         this.nota = nota;
         this.feedback = feedback;
     }
 
-    // Método adicional: Devuelve la nota (para compatibilidad con el test)
+ 
     public int getCalificacion() {
         return nota;
     }
 
-    // Getters y setters
+
     public int getNota() {
         return nota;
     }

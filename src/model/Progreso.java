@@ -34,7 +34,7 @@ public class Progreso {
         calcularProgreso();
     }
 
-    // Getters y setters
+
     public int getTotalActividades() {
         return totalActividades;
     }

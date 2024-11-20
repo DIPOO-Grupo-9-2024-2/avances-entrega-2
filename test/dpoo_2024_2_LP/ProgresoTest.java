@@ -32,7 +32,7 @@ class ProgresoTest {
         assertEquals(0, progresoCero.getPorcentajeProgreso(), "El porcentaje de progreso debería ser 0% si totalActividades es 0");
     }
 
-    // Nuevos tests para los setters y getters
+
 
     @Test
     public void testSetPorcentajeProgreso() {

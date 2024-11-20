@@ -14,14 +14,13 @@ public abstract  class Examen extends Evaluacion {
     public Calificacion calificar(List<RespuestaExamen> respuestas) {
         int correctas = 0;
 
-        // Contar respuestas correctas
         for (RespuestaExamen respuesta : respuestas) {
             if (respuesta.isCorrecta()) {
                 correctas++;
             }
         }
 
-        // Calcular calificación basada en respuestas correctas
+
         int puntaje = (int) ((correctas * 10) / getNumPreguntas());
         boolean aprobado = puntaje >= getCalificacionMinima();
         if (aprobado) {

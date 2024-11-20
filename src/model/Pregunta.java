@@ -3,12 +3,12 @@ package model;
 import java.util.List;
 
 public class Pregunta {
-    private String texto;               // El enunciado de la pregunta
-    private List<String> opciones;          // Opciones de respuesta (en caso de ser de opción múltiple)
-    private String respuestaCorrecta;   // La respuesta correcta
-    private String explicacion;         // Explicación de la respuesta correcta
+    private String texto;               
+    private List<String> opciones;          
+    private String respuestaCorrecta;   
+    private String explicacion;        
 
-    // Constructor
+
     public Pregunta(String texto, List<String> list, String respuestaCorrecta, String explicacion) {
         this.texto = texto;
         this.opciones = list;
@@ -16,12 +16,12 @@ public class Pregunta {
         this.explicacion = explicacion;
     }
 
-    // Método que verifica si la respuesta dada es correcta
+
     public boolean esCorrecta(String respuestaEstudiante) {
         return respuestaCorrecta.equals(respuestaEstudiante);
     }
 
-    // Getters y setters
+
     public String getTexto() {
         return texto;
     }
