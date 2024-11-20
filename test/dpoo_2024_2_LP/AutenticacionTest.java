@@ -29,7 +29,7 @@ public class AutenticacionTest {
 
 
         autenticacion.registrarUsuario(usuario);
-        System.out.println("Usuario registrado: " + usuario.getEmail()); 
+
     }
 
 
