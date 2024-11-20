@@ -31,7 +31,7 @@ public class ConsolaLearningPath {
             System.out.println("0. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar buffer
+            scanner.nextLine(); 
 
             switch (opcion) {
                 case 1 -> verDetalles();
@@ -73,7 +73,7 @@ public class ConsolaLearningPath {
         int duracionEsperada = scanner.nextInt();
         System.out.print("¿Es obligatoria? (true/false): ");
         boolean esObligatoria = scanner.nextBoolean();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         Actividad nuevaActividad = new ActividadConcreta(id,descripcion,objetivo,duracionEsperada,esObligatoria);
         learningPath.agregarActividad(nuevaActividad);
@@ -84,7 +84,7 @@ public class ConsolaLearningPath {
         System.out.println("\n--- Iniciar Actividad ---");
         System.out.print("Ingrese el ID de la actividad: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         Actividad actividad = buscarActividadPorId(id);
         if (actividad != null) {
@@ -99,7 +99,7 @@ public class ConsolaLearningPath {
         System.out.println("\n--- Completar Actividad ---");
         System.out.print("Ingrese el ID de la actividad: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
         System.out.print("Ingrese el resultado de la actividad: ");
         String resultado = scanner.nextLine();
 
@@ -122,10 +122,10 @@ public class ConsolaLearningPath {
         System.out.println("\n--- Resolver Quiz de Verdadero o Falso ---");
         System.out.print("Ingrese el ID del quiz: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
         System.out.print("Ingrese su respuesta (true/false): ");
         boolean respuesta = scanner.nextBoolean();
-        scanner.nextLine(); // Limpiar buffer
+        scanner.nextLine(); 
 
         Actividad actividad = buscarActividadPorId(id);
         if (actividad instanceof QuizVerdaderoFalso quiz) {

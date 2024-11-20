@@ -30,7 +30,7 @@ public class ConsolaEstudiante {
             System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer
+            scanner.nextLine(); 
 
             switch (opcion) {
                 case 1:
@@ -69,7 +69,7 @@ public class ConsolaEstudiante {
     private void inscribirLearningPath() {
         System.out.print("Ingrese el ID del LearningPath que desea inscribirse: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer
+        scanner.nextLine(); 
         LearningPath lp = buscarLearningPath(id);
         if (lp != null) {
             estudiante.inscribirLearningPath(lp);
@@ -93,7 +93,7 @@ public class ConsolaEstudiante {
     private List<Actividad> obtenerActividadesDisponibles() {
         List<Actividad> actividadesDisponibles = new ArrayList<>();
         for (LearningPath lp : estudiante.getLearningPathsInscritos()) {
-            actividadesDisponibles.addAll(lp.getActividades()); // Suponiendo que getActividades() existe en LearningPath
+            actividadesDisponibles.addAll(lp.getActividades()); 
         }
         return actividadesDisponibles;
     }
@@ -115,7 +115,7 @@ public class ConsolaEstudiante {
 
         System.out.print("Seleccione una actividad para inscribirse (número): ");
         int opcion = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer
+        scanner.nextLine();
 
         if (opcion < 1 || opcion > actividadesDisponibles.size()) {
             System.out.println("Opción inválida.");
@@ -143,7 +143,7 @@ public class ConsolaEstudiante {
 
         System.out.print("Seleccione una actividad para ver su progreso: ");
         int indice = scanner.nextInt() - 1;
-        scanner.nextLine(); // Limpiar el buffer
+        scanner.nextLine(); 
 
         if (indice >= 0 && indice < actividades.size()) {
             Actividad actividadSeleccionada = actividades.get(indice);
